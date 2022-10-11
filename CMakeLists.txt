@@ -1,6 +1,12 @@
 cmake_minimum_required(VERSION 3.0.2)
 project(assist)
 
+find_package(catkin REQUIRED COMPONENTS
+  multirole_func
+  motion
+  utils
+)
+
 catkin_package(
  INCLUDE_DIRS include
 )
@@ -11,5 +17,5 @@ include
 )
 
 ## Declare a C++ library
-add_library(${PROJECT_NAME}_lib src/${PROJECT_NAME}.c)
-target_link_libraries(${PROJECT_NAME}_lib ${catkin_LIBRARIES})
+add_library(${PROJECT_NAME}_lib src/${PROJECT_NAME}.cpp)
+target_link_libraries(${PROJECT_NAME}_lib ${catkin_LIBRARIES} multirole_func_lib motion_lib utils_lib)
